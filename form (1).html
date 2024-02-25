@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Sign Up</title>
+    <link rel="stylesheet" href="form.css">
+    <style>
+        body {
+          background-image:url(https://png.pngtree.com/thumb_back/fh260/back_pic/04/04/03/285809807996bcc.jpg);
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          background-position: center;
+        }
+        </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Doctor's Sign Up</h1>
+        <form action="https://sheetdb.io/api/v1/r6xgr7k4zigdi" method="post" id="sheetdb-form">
+            <div class="user-details">
+            <div class="input-field">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="data[name]" required>
+            </div>
+            <div class="input-field">
+                <label for="email">Email id</label>
+                <input type="email" id="email" name="data[email]" required>
+            </div>
+            <div class="input-field">
+                <label for="location">Location</label>
+                <input type="location" id="location" name="data[location]" required>
+            </div>
+            <div class="input-field">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" maxLength="10" name="data[phone]" required>
+            </div>
+            <div class="input-field">
+                <label for="speciality">Speciality</label>
+                <input type="text" id="speciality" name="data[speciality]" required>
+            </div>
+            <div class="input-field">
+                <label for="services">Services</label>
+                <textarea id="services" rows="2" maxlength="30" name="data[services]" required></textarea>
+            </div>
+            <div class="input-field">
+                <label for="timings">Available Timings</label>
+                <input type="text" id="timings" placeholder="9:00 Am To 8:00 Pm" name="data[timings]" required>
+            </div>
+            <div class="input-field">
+                <label for="consultation fees">Consultation Fees</label>
+                <input type="tel" id="consultation fees" maxLength="4" placeholder="upto Rs.5000" name="data[consultation fees]" required>
+            </div>
+            <div class="input-field">
+                <label for="description">Description</label>
+                <textarea id="description" rows="4" maxlength="250" name="data[description ]" required></textarea>
+            </div>
+            <div class="input-field">
+                <label for="photo">Upload your Photograph</label>
+                <input type="file" onchange="readURL(this)" name="data[photo]" id="photo" accept="image/*" required>
+
+            </div>
+            </div>
+            <div class="submit-btn">
+                <button type="submit" class="submit-btn">Get Registered</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        var form = document.getElementById('sheetdb-form');
+        form.addEventListener("submit", e => {
+          e.preventDefault();
+          fetch(form.action, {
+              method : "POST",
+              body: new FormData(document.getElementById("sheetdb-form")),
+          }).then(
+              response => response.json()
+          ).then((html) => {
+            window.open('index.html', '_blank');
+
+          });
+        });
+    </script>
+</body>
+</html>
